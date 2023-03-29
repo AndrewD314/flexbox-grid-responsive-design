@@ -1,25 +1,21 @@
 html {
-    box-sizing: border-box
+    box-sizing: border-box;
   }
   
-  /* The Universal Selector */
-  *, /* All elements*/
-  *::before, /* All ::before pseudo-elements */
-  *::after { /* All ::after pseudo-elements */
-    /* height & width will now include border & padding by default
-       but can be over-ridden as needed */
+ 
+  *,
+  *::before,
+  *::after {
     box-sizing: inherit;
   }
   
-  /* resets font size to be 62.5% of the user preference - 
-     in most browser configurations this will be 10px */
+  
   :root {
-    font-size: 62.5%
+    font-size: 62.5%;
   }
   
   body {
-    background-color: gray;
-  /* Use a system font, if none are available use an available sans-sarif   font */
+    background-color: red;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
       Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
     margin: 0;
@@ -30,10 +26,14 @@ html {
   }
   
   main {
-    width: 300px;
+    width: 500px; 
     background-color: white;
     font-size: 2rem;
     text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: auto auto auto auto auto; 
+    gap: 20px; 
   }
   
   #status {
@@ -42,14 +42,19 @@ html {
     font-weight: bold;
     color: gray;
     padding: 10px 20px 0 0;
+    grid-row: 1 / 2; 
+    grid-column: 1 / 2;
   }
   
   img {
     border-radius: 50%;
     border: green 4px solid;
+    grid-row: 2 / 5; 
+    grid-column: 1 / 2;
   }
   
-  h1, p {
+  h1,
+  p {
     margin: 0;
   }
   
@@ -58,87 +63,50 @@ html {
     padding: 8px 0;
   }
   
+  #name {
+    grid-row: 2 / 3; 
+    grid-column: 2 / 3;
+  }
+  
   #occupation {
     background-color: lightgray;
     padding: 16px 0;
+    grid-row: 3 / 4; 
+    grid-column: 2 / 3;
   }
   
   #brand {
-    display: none;
+    grid-row: 4 / 5; 
+    grid-column: 2 / 3;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    background-color: lightgray;
+    padding: 20px;
+  }
+  
+  #brand p {
+    font-size: 1.6rem;
+    border-left: green 4px solid;
+    padding: 0 20px 0 8px;
+    margin: 0;
   }
   
   #offer {
     padding: 16px 0;
-  }
-  
-  #contact {
+    grid-row: 5 / 6; 
+    grid-column: 2 / 3;
+    background-color: lightgray;
     display: flex;
-  }
-  
-  #contact > p {
-    height: 60px;
-    width: 50%;
-    display: flex;
+    flex-direction: column; 
     align-items: center;
     justify-content: center;
   }
   
-  #contact > p:first-child {
-    background-color: lime;
+  #offer p {
+    margin: 0;
+    font-size: 2.4rem;
   }
   
-  #contact > p:last-child {
-    background-color: green;
-  }
-  
-  
-  @media only screen and (min-width: 600px) {
-    main {
-      display: grid;
-      text-align: left;
-      width: 550px;
-      grid-template-columns: 40% 60%;
-      grid-template-rows: auto auto auto auto;
-      grid-template-areas: 
-        "status name"
-        "img occupation"
-        "img brand" 
-        "contact offer";
-    }
-  
-    #status {
-      text-align: left;
-      padding: 10px 0 0 20px;
-    }
-  
-    img {
-      grid-area: img;
-      margin: 0 auto;
-    }
-  
-    #brand {
-      display: inline;
-    }
-  
-    #contact {
-      grid-area: contact;
-    }
-  
-  
-    #brand > p {
-      border-left: green 4px solid;
-      padding: 0 20px 0 8px;
-      font-size: 1.6rem;
-    }
-  
-    #offer {
-      font-size: 1.4rem;
-      padding: 10px;
-    }
-  
-    #name, #occupation, #brand, #offer {
-      padding-left: 20px;
-      background-color: lightgray;
-    }
-  }
   
